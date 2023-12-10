@@ -9,12 +9,16 @@ interface ToDoListProps {
 }
 export const ToDoList: React.FC<ToDoListProps> = ({ toDos, onChange }) => (
   <Card sx={{ width: 500 }}>
-    <CardContent>
-      <List>
-        {toDos.map((elem) => (
-          <ToDoItem toDo={elem} onChange={onChange} />
-        ))}
-      </List>
-    </CardContent>
+    {toDos?.length > 0 ? (
+      <CardContent>
+        <List>
+          {toDos.map((elem) => (
+            <ToDoItem toDo={elem} onChange={onChange} />
+          ))}
+        </List>
+      </CardContent>
+    ) : (
+      <></>
+    )}
   </Card>
 );
