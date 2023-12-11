@@ -6,7 +6,7 @@ type EventHandleChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 type EventHandleChangeKeyDown = KeyboardEvent<HTMLInputElement>;
 
 export const ToDoForm: React.FC = () => {
-  const { add } = useToDo();
+  const { add, toDos } = useToDo();
   const [title, setTitle] = useState<string>("");
 
   // --> Função responsável por capturar o evento de escrever/digitar no input e salvar no estado.
@@ -22,6 +22,8 @@ export const ToDoForm: React.FC = () => {
       setTitle("");
     }
   };
+
+  console.log({ todosNoForm: toDos });
 
   return (
     <Card sx={{ marginBottom: 16 }} onKeyDown={handleKeyDown}>
