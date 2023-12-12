@@ -1,12 +1,15 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import { Card, CardContent, TextField } from "@mui/material";
-import { useToDo } from "../hooks/useToDo";
+import { useTodoReturn } from "../types";
 
 type EventHandleChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 type EventHandleChangeKeyDown = KeyboardEvent<HTMLInputElement>;
 
-export const ToDoForm: React.FC = () => {
-  const { add, toDos } = useToDo();
+interface ToDoFormProps {
+  add: useTodoReturn["add"];
+}
+
+export const ToDoForm: React.FC<ToDoFormProps> = ({ add }) => {
   const [title, setTitle] = useState<string>("");
 
   // --> Função responsável por capturar o evento de escrever/digitar no input e salvar no estado.
@@ -15,15 +18,13 @@ export const ToDoForm: React.FC = () => {
     setTitle(titleTyped);
   };
 
-  // --> Função responsável por criar um novo ToDo. Acionada quando a tecla "Enter" é pressionada.
+  // --> Função responsável por criar um novo To-Do. Acionada quando a tecla "Enter" é pressionada.
   const handleKeyDown = (event: EventHandleChangeKeyDown) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && title.length > 0) {
       add(title);
       setTitle("");
     }
   };
-
-  console.log({ todosNoForm: toDos });
 
   return (
     <Card sx={{ marginBottom: 16 }} onKeyDown={handleKeyDown}>

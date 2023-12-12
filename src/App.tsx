@@ -5,12 +5,12 @@ import { ToDoList } from "./components/ToDoList";
 import { useToDo } from "./hooks/useToDo";
 
 function App() {
-  const { toDos } = useToDo();
+  const { toDos, add, toggle } = useToDo();
 
   return (
     <>
-      <ToDoForm />
-      <ToDoList toDos={toDos} onChange={() => {}} />
+      <ToDoForm add={add} />
+      <ToDoList toDos={toDos} onChange={toggle} />
     </>
   );
 }

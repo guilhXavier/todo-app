@@ -3,3 +3,9 @@ export interface ToDo {
   title: string;
   isCompleted: boolean;
 }
+
+export interface useTodoReturn {
+  add: (title: string) => void;
+  toggle: (id: number) => void;
+  toDos: Array<ToDo>;
+}

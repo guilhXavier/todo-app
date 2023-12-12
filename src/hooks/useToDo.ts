@@ -1,11 +1,5 @@
 import React from "react";
-import { ToDo } from "../types";
-
-interface useTodoReturn {
-  add: (title: string) => void;
-  toggle: (id: number) => void;
-  toDos: Array<ToDo>;
-}
+import { ToDo, useTodoReturn } from "../types";
 
 export const useToDo = (): useTodoReturn => {
   const [toDos, setToDos] = React.useState<Array<ToDo>>([]);

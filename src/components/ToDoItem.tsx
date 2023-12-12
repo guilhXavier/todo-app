@@ -11,15 +11,20 @@ import { ToDo } from "../types";
 
 interface ToDoItemProps {
   toDo: ToDo;
-  onChange: () => void;
+  onChange: (id: number) => void;
 }
 
-export const ToDoItem: React.FC<ToDoItemProps> = ({ toDo }) => (
+export const ToDoItem: React.FC<ToDoItemProps> = ({ toDo, onChange }) => (
   <ListItem
     key={toDo.id}
     secondaryAction={<Checkbox edge="end" checked={toDo.isCompleted} />}
   >
-    <ListItemButton disabled={toDo.isCompleted}>
+    <ListItemButton
+      disabled={toDo.isCompleted}
+      onClick={() => {
+        onChange(toDo.id);
+      }}
+    >
       <ListItemIcon>
         <InboxIcon />
       </ListItemIcon>
