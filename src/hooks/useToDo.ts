@@ -13,11 +13,16 @@ export const useToDo = (): useTodoReturn => {
   };
 
   const toggle = (id: number): void => {
-    const toDo = toDos.find((elem) => elem.id === id);
-    const filteredList = toDos.filter((elem) => elem.id !== id);
+    const toDo = toDos.find((element) => element.id === id);
 
     if (toDo) {
-      setToDos([...filteredList, toDo]);
+      const updatedToDo = {
+        ...toDo,
+        isCompleted: !toDo?.isCompleted,
+      };
+
+      const filteredToDos = toDos.filter((element) => element.id !== id);
+      setToDos([...filteredToDos, updatedToDo]);
     }
   };
 

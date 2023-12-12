@@ -18,13 +18,11 @@ export const ToDoItem: React.FC<ToDoItemProps> = ({ toDo, onChange }) => (
   <ListItem
     key={toDo.id}
     secondaryAction={<Checkbox edge="end" checked={toDo.isCompleted} />}
+    onClick={() => {
+      onChange(toDo.id);
+    }}
   >
-    <ListItemButton
-      disabled={toDo.isCompleted}
-      onClick={() => {
-        onChange(toDo.id);
-      }}
-    >
+    <ListItemButton disabled={toDo.isCompleted}>
       <ListItemIcon>
         <InboxIcon />
       </ListItemIcon>
