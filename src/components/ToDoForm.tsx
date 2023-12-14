@@ -1,5 +1,7 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from "react";
-import { Card, CardContent, TextField } from "@mui/material";
+import { Card, CardContent, TextField, Button } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+
 import { useTodoReturn } from "../types";
 
 type EventHandleChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
@@ -26,11 +28,27 @@ export const ToDoForm: React.FC<ToDoFormProps> = ({ add }) => {
     }
   };
 
+  const handleClick = () => {
+    if (title) {
+      add(title);
+      setTitle("");
+    }
+  };
+
   return (
-    <Card sx={{ marginBottom: 16 }} onKeyDown={handleKeyDown}>
-      <CardContent>
+    <Card
+      sx={{ padding: 4, width: "100%", border: "2px solid blue" }}
+      onKeyDown={handleKeyDown}
+    >
+      <CardContent
+        sx={{
+          width: "100%",
+          border: "2px solid green",
+          display: "flex",
+          padding: 0,
+        }}
+      >
         <TextField
-          sx={{ width: "100%" }}
           label="Qual a próxima tarefa?"
           variant="outlined"
           value={title}
@@ -38,6 +56,14 @@ export const ToDoForm: React.FC<ToDoFormProps> = ({ add }) => {
             handleChange(event);
           }}
         />
+        <Button
+          onClick={handleClick}
+          variant="contained"
+          color="success"
+          endIcon={<SendIcon />}
+        >
+          Adicionar
+        </Button>
       </CardContent>
     </Card>
   );

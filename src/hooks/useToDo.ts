@@ -16,7 +16,6 @@ export const useToDo = (): useTodoReturn => {
     const toDo = toDos.find((element) => element.id === id);
 
     if (toDo) {
-      
       const filteredToDos = toDos.map((element) => {
         if (element.id === toDo.id) {
           element.isCompleted = !element.isCompleted;
