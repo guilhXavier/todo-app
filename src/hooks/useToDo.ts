@@ -16,13 +16,16 @@ export const useToDo = (): useTodoReturn => {
     const toDo = toDos.find((element) => element.id === id);
 
     if (toDo) {
-      const updatedToDo = {
-        ...toDo,
-        isCompleted: !toDo?.isCompleted,
-      };
+      
+      const filteredToDos = toDos.map((element) => {
+        if (element.id === toDo.id) {
+          element.isCompleted = !element.isCompleted;
+          return element;
+        }
+        return element;
+      });
 
-      const filteredToDos = toDos.filter((element) => element.id !== id);
-      setToDos([...filteredToDos, updatedToDo]);
+      setToDos(filteredToDos);
     }
   };
 
