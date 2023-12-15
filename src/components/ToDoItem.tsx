@@ -32,7 +32,10 @@ export const ToDoItem: React.FC<ToDoItemProps> = ({ toDo, onChange }) => (
       <ListItemIcon>
         <TaskIcon />
       </ListItemIcon>
-      <ListItemText sx={{ color: "black" }} primary={toDo.title} />
+      <ListItemText
+        sx={{ color: "black" }}
+        primary={`${toDo.id + 1} - ${toDo.title}`}
+      />
     </ListItemButton>
   </ListItem>
 );
