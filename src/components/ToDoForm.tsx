@@ -37,15 +37,24 @@ export const ToDoForm: React.FC<ToDoFormProps> = ({ add }) => {
 
   return (
     <Card
-      sx={{ padding: 4, width: "100%", border: "2px solid blue" }}
+      sx={{
+        padding: 4,
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
       onKeyDown={handleKeyDown}
     >
       <CardContent
         sx={{
           width: "100%",
-          border: "2px solid green",
           display: "flex",
           padding: 0,
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 5,
         }}
       >
         <TextField
@@ -55,11 +64,13 @@ export const ToDoForm: React.FC<ToDoFormProps> = ({ add }) => {
           onChange={(event) => {
             handleChange(event);
           }}
+          sx={{ flex: 1 }}
         />
         <Button
           onClick={handleClick}
           variant="contained"
           color="success"
+          sx={{ height: "50px" }}
           endIcon={<SendIcon />}
         >
           Adicionar
