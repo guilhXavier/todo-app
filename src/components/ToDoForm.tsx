@@ -1,11 +1,11 @@
-import React, { useState, ChangeEvent, KeyboardEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { Card, CardContent, TextField, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import { toast } from "react-toastify";
 
 import { useTodoReturn } from "../types";
 
 type EventHandleChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
-type EventHandleChangeKeyDown = KeyboardEvent<HTMLInputElement>;
 
 interface ToDoFormProps {
   add: useTodoReturn["add"];
@@ -20,18 +20,22 @@ export const ToDoForm: React.FC<ToDoFormProps> = ({ add }) => {
     setTitle(titleTyped);
   };
 
-  // --> Função responsável por criar um novo To-Do. Acionada quando a tecla "Enter" é pressionada.
-  const handleKeyDown = (event: EventHandleChangeKeyDown) => {
-    if (event.key === "Enter" && title.length > 0) {
-      add(title);
-      setTitle("");
-    }
-  };
-
   const handleClick = () => {
     if (title) {
       add(title);
       setTitle("");
+    } else {
+      toast.info("Dê um nome para sua tarefa primeiro :)", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        style: { width: "355px" },
+      });
     }
   };
 
@@ -45,7 +49,6 @@ export const ToDoForm: React.FC<ToDoFormProps> = ({ add }) => {
         justifyContent: "center",
         flexDirection: "column",
       }}
-      onKeyDown={handleKeyDown}
     >
       <CardContent
         sx={{
@@ -69,7 +72,6 @@ export const ToDoForm: React.FC<ToDoFormProps> = ({ add }) => {
         <Button
           onClick={handleClick}
           variant="contained"
-          color="success"
           sx={{ height: "50px" }}
           endIcon={<SendIcon />}
         >
