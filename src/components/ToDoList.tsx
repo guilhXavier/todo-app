@@ -9,7 +9,7 @@ interface ToDoListProps {
 }
 export const ToDoList: React.FC<ToDoListProps> = ({ toDos, onChange }) => {
   return (
-    <Card sx={{ width: 500 }}>
+    <Card sx={{ width: "100%", marginTop: "8%" }}>
       {toDos?.length > 0 ? (
         <CardContent>
           <List>

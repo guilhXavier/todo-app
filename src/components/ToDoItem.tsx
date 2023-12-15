@@ -6,7 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import InboxIcon from "@mui/icons-material/Inbox";
+import TaskIcon from "@mui/icons-material/Task";
 import { ToDo } from "../types";
 
 interface ToDoItemProps {
@@ -16,6 +16,12 @@ interface ToDoItemProps {
 
 export const ToDoItem: React.FC<ToDoItemProps> = ({ toDo, onChange }) => (
   <ListItem
+    sx={{
+      borderRadius: "8px",
+      marginTop: 4,
+      padding: 2,
+      boxShadow: "2px 2px 2px grey",
+    }}
     key={toDo.id}
     secondaryAction={<Checkbox edge="end" checked={toDo.isCompleted} />}
     onClick={() => {
@@ -24,7 +30,7 @@ export const ToDoItem: React.FC<ToDoItemProps> = ({ toDo, onChange }) => (
   >
     <ListItemButton disabled={toDo.isCompleted}>
       <ListItemIcon>
-        <InboxIcon />
+        <TaskIcon />
       </ListItemIcon>
       <ListItemText sx={{ color: "black" }} primary={toDo.title} />
     </ListItemButton>

@@ -13,17 +13,9 @@
 
 .global-wrapper {
   display: flex;
+  min-height: 500px;
   max-width: 650px;
   width: 100%;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-}
-
-.card {
-  padding: 2em;
-}
-
-.MuiPaper-root-MuiCard-root {
-  width: none !important;
 }
