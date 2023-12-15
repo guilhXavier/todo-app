@@ -14,7 +14,7 @@ interface ToDoItemProps {
   onChange: (id: number) => void;
 }
 
-export const ToDoItem: React.FC<ToDoItemProps> = ({ toDo, onChange }) => (
+export const ToDoItem: React.FC<ToDoItemProps> = ({ toDo }) => (
   <ListItem
     sx={{
       borderRadius: "8px",
@@ -24,9 +24,6 @@ export const ToDoItem: React.FC<ToDoItemProps> = ({ toDo, onChange }) => (
     }}
     key={toDo.id}
     secondaryAction={<Checkbox edge="end" checked={toDo.isCompleted} />}
-    onClick={() => {
-      onChange(toDo.id);
-    }}
   >
     <ListItemButton disabled={toDo.isCompleted}>
       <ListItemIcon>
